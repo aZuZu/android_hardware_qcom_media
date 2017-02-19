@@ -29,7 +29,7 @@ MM_CORE_TARGET = 8610
 else ifeq ($(TARGET_BOARD_PLATFORM),msm8226)
 MM_CORE_TARGET = 8226
 else ifeq ($(TARGET_BOARD_PLATFORM),msm8916)
-MM_CORE_TARGET = 8916
+MM_CORE_TARGET = 8974
 else ifeq ($(TARGET_BOARD_PLATFORM),msm8084)
 MM_CORE_TARGET = 8084
 else ifeq ($(TARGET_BOARD_PLATFORM),msm8952)
@@ -93,9 +93,9 @@ LOCAL_CFLAGS            := $(OMXCORE_CFLAGS)
 LOCAL_SRC_FILES         := src/common/omx_core_cmp.cpp
 LOCAL_SRC_FILES         += src/common/qc_omx_core.c
 ifneq (,$(filter msm8916 msm8994 msm8909 thulium msm8952 msm8992,$(TARGET_BOARD_PLATFORM)))
-LOCAL_SRC_FILES         += src/$(MM_CORE_TARGET)/registry_table_android.c
-else
 LOCAL_SRC_FILES         += src/$(MM_CORE_TARGET)/qc_registry_table_android.c
+else
+LOCAL_SRC_FILES         += src/$(MM_CORE_TARGET)/qc_registry_table.c
 endif
 
 include $(BUILD_SHARED_LIBRARY)
@@ -116,7 +116,7 @@ LOCAL_CFLAGS            := $(OMXCORE_CFLAGS)
 LOCAL_SRC_FILES         := src/common/omx_core_cmp.cpp
 LOCAL_SRC_FILES         += src/common/qc_omx_core.c
 ifneq (,$(filter msm8916 msm8994 msm8909 thulium msm8952 msm8992,$(TARGET_BOARD_PLATFORM)))
-LOCAL_SRC_FILES         += src/$(MM_CORE_TARGET)/registry_table.c
+LOCAL_SRC_FILES         += src/$(MM_CORE_TARGET)/qc_registry_table_android.c
 else
 LOCAL_SRC_FILES         += src/$(MM_CORE_TARGET)/qc_registry_table.c
 endif
